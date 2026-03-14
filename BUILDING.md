@@ -34,7 +34,7 @@ sudo apt-get update && sudo apt-get install -y zlib1g-dev
 ### Development tooling (optional)
 
 ```bash
-sudo apt-get update && sudo apt-get install -y valgrind gdb python3 python3-venv python3-pip perl autoconf automake libtool
+sudo apt-get update && sudo apt-get install -y valgrind gdb perl autoconf automake libtool python3 python3-venv python3-pip
 ```
 
 
@@ -46,6 +46,7 @@ Clone & build:
 ```bash
 git clone --depth 1 "https://github.com/contactandyc/a-memory-library.git" "a-memory-library"
 cd a-memory-library
+./build.sh clean
 ./build.sh install
 cd ..
 rm -rf a-memory-library
@@ -59,6 +60,7 @@ Clone & build:
 ```bash
 git clone --depth 1 "https://github.com/contactandyc/the-lz4-library.git" "the-lz4-library"
 cd the-lz4-library
+./build.sh clean
 ./build.sh install
 cd ..
 rm -rf the-lz4-library
@@ -72,6 +74,7 @@ Clone & build:
 ```bash
 git clone --depth 1 "https://github.com/contactandyc/the-macro-library.git" "the-macro-library"
 cd the-macro-library
+./build.sh clean
 ./build.sh install
 cd ..
 rm -rf the-macro-library
@@ -85,6 +88,7 @@ Clone & build:
 ```bash
 git clone --depth 1 "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library"
 cd a-tokenizer-library
+./build.sh clean
 ./build.sh install
 cd ..
 rm -rf a-tokenizer-library
@@ -107,6 +111,7 @@ Clone & build:
 ```bash
 git clone --depth 1 "https://github.com/contactandyc/the-io-library.git" "the-io-library"
 cd the-io-library
+./build.sh clean
 ./build.sh install
 cd ..
 rm -rf the-io-library
@@ -145,13 +150,13 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
     valgrind \
     gdb \
-    python3 \
-    python3-venv \
-    python3-pip \
     perl \
     autoconf \
     automake \
     libtool \
+    python3 \
+    python3-venv \
+    python3-pip \
  && rm -rf /var/lib/apt/lists/*
 
 # --- Install CMake from official binaries (arch-aware) ------------------------
@@ -183,6 +188,7 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN set -eux; \
   git clone --depth 1 "https://github.com/contactandyc/a-memory-library.git" "a-memory-library" && \
   cd a-memory-library && \
+  ./build.sh clean && \
   ./build.sh install && \
   cd .. && \
   rm -rf a-memory-library
@@ -191,6 +197,7 @@ RUN set -eux; \
 RUN set -eux; \
   git clone --depth 1 "https://github.com/contactandyc/the-lz4-library.git" "the-lz4-library" && \
   cd the-lz4-library && \
+  ./build.sh clean && \
   ./build.sh install && \
   cd .. && \
   rm -rf the-lz4-library
@@ -199,6 +206,7 @@ RUN set -eux; \
 RUN set -eux; \
   git clone --depth 1 "https://github.com/contactandyc/the-macro-library.git" "the-macro-library" && \
   cd the-macro-library && \
+  ./build.sh clean && \
   ./build.sh install && \
   cd .. && \
   rm -rf the-macro-library
@@ -207,6 +215,7 @@ RUN set -eux; \
 RUN set -eux; \
   git clone --depth 1 "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library" && \
   cd a-tokenizer-library && \
+  ./build.sh clean && \
   ./build.sh install && \
   cd .. && \
   rm -rf a-tokenizer-library
@@ -215,6 +224,7 @@ RUN set -eux; \
 RUN set -eux; \
   git clone --depth 1 "https://github.com/contactandyc/the-io-library.git" "the-io-library" && \
   cd the-io-library && \
+  ./build.sh clean && \
   ./build.sh install && \
   cd .. && \
   rm -rf the-io-library

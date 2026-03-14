@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023–2025 Andy Curtis <contactandyc@gmail.com>
+# SPDX-FileCopyrightText: 2023–2026 Andy Curtis <contactandyc@gmail.com>
 # SPDX-FileCopyrightText: 2024–2025 Knode.ai — technical questions: contact Andy (above)
 # SPDX-License-Identifier: Apache-2.0
 
@@ -18,6 +18,8 @@ find_library(M_LIB m)
 # ---- Test executables ----
 set(TEST_EXECUTABLES "")
 add_executable(test_document_builder  src/test_document_builder.c)
+
+target_include_directories(test_document_builder PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 list(APPEND TEST_EXECUTABLES test_document_builder)
 
