@@ -52,8 +52,11 @@ find_package(a_tokenizer_library CONFIG REQUIRED)
 
 # ---- Dependencies (PkgConfig Shims) ----
 
+
 # ── Library variants (ALL are defined & built/installed) ──────────────────────
-add_library(search_index_library_debug  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
+
+add_library(search_index_library_debug STATIC
+  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
 
 target_include_directories(search_index_library_debug PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -87,7 +90,9 @@ install(TARGETS search_index_library_debug EXPORT search_index_libraryTargets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_memory  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
+
+add_library(search_index_library_memory STATIC
+  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
 
 target_include_directories(search_index_library_memory PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -124,7 +129,9 @@ install(TARGETS search_index_library_memory EXPORT search_index_libraryTargets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_static  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
+
+add_library(search_index_library_static STATIC
+  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
 
 target_include_directories(search_index_library_static PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -158,7 +165,9 @@ install(TARGETS search_index_library_static EXPORT search_index_libraryTargets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_shared  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
+
+add_library(search_index_library_shared SHARED
+  src/sil_document_builder.c  src/sil_document_image.c  src/sil_search_builder.c  src/sil_search_image.c  src/snippets.c)
 
 target_include_directories(search_index_library_shared PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
