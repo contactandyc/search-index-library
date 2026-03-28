@@ -88,15 +88,25 @@ RUN set -eux; \
     cd ..; \
     rm -rf "the-macro-library"
 
-# --- Build & install a-tokenizer-library ---
+# --- Build & install a-json-sax-library ---
 RUN set -eux; \
-    git clone --depth 1 --single-branch "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library"; \
-    cd "a-tokenizer-library"; \
+    git clone --depth 1 --single-branch "https://github.com/contactandyc/a-json-sax-library.git" "a-json-sax-library"; \
+    cd "a-json-sax-library"; \
     ./build.sh clean && \
     ./build.sh install
 ; \
     cd ..; \
-    rm -rf "a-tokenizer-library"
+    rm -rf "a-json-sax-library"
+
+# --- Build & install a-json-library ---
+RUN set -eux; \
+    git clone --depth 1 --single-branch "https://github.com/contactandyc/a-json-library.git" "a-json-library"; \
+    cd "a-json-library"; \
+    ./build.sh clean && \
+    ./build.sh install
+; \
+    cd ..; \
+    rm -rf "a-json-library"
 
 # --- Build & install the-io-library ---
 RUN set -eux; \

@@ -1,6 +1,6 @@
 # BUILDING
 
-This project: **Search Index Library**
+This project: **A Sentence Chunker Library**
 Version: **0.0.1**
 
 ## Local build
@@ -82,17 +82,31 @@ rm -rf "the-macro-library"
 ```
 
 
-### a-tokenizer-library
+### a-json-sax-library
 
 Clone & build:
 
 ```bash
-git clone --depth 1 --single-branch "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library"
-cd "a-tokenizer-library"
+git clone --depth 1 --single-branch "https://github.com/contactandyc/a-json-sax-library.git" "a-json-sax-library"
+cd "a-json-sax-library"
 ./build.sh clean
 ./build.sh install
 cd ..
-rm -rf "a-tokenizer-library"
+rm -rf "a-json-sax-library"
+```
+
+
+### a-json-library
+
+Clone & build:
+
+```bash
+git clone --depth 1 --single-branch "https://github.com/contactandyc/a-json-library.git" "a-json-library"
+cd "a-json-library"
+./build.sh clean
+./build.sh install
+cd ..
+rm -rf "a-json-library"
 ```
 
 
