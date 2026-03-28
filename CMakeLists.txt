@@ -7,7 +7,7 @@
 # CMakeLists.txt for libraries (regular or header-only)
 cmake_minimum_required(VERSION 3.20)
 
-project(search_index_library
+project(a_sentence_chunker_library
   VERSION 0.0.1
   LANGUAGES C
 )
@@ -51,7 +51,7 @@ find_package(a_json_library CONFIG REQUIRED)
 
 # ── Main Targets (Compiled Libraries) ─────────────────────────────────────────
 
-add_library(search_index_library_debug STATIC
+add_library(a_sentence_chunker_library_debug STATIC
   src/sil_document_builder.c
   src/sil_document_image.c
   src/sil_search_builder.c
@@ -59,40 +59,40 @@ add_library(search_index_library_debug STATIC
   src/snippets.c
 )
 
-target_include_directories(search_index_library_debug PUBLIC
+target_include_directories(a_sentence_chunker_library_debug PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-set_target_properties(search_index_library_debug PROPERTIES
+set_target_properties(a_sentence_chunker_library_debug PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
 
 if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_debug PROPERTIES
+  set_target_properties(a_sentence_chunker_library_debug PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
   )
 endif()
 
-target_link_libraries(search_index_library_debug PUBLIC
+target_link_libraries(a_sentence_chunker_library_debug PUBLIC
   the_macro_library::the_macro_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
 )
 
-target_compile_options(search_index_library_debug PRIVATE ${_A_DEBUG_OPTS})
+target_compile_options(a_sentence_chunker_library_debug PRIVATE ${_A_DEBUG_OPTS})
 
 
-install(TARGETS search_index_library_debug EXPORT search_index_libraryTargets
+install(TARGETS a_sentence_chunker_library_debug EXPORT a_sentence_chunker_libraryTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_memory STATIC
+add_library(a_sentence_chunker_library_memory STATIC
   src/sil_document_builder.c
   src/sil_document_image.c
   src/sil_search_builder.c
@@ -100,43 +100,43 @@ add_library(search_index_library_memory STATIC
   src/snippets.c
 )
 
-target_include_directories(search_index_library_memory PUBLIC
+target_include_directories(a_sentence_chunker_library_memory PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-set_target_properties(search_index_library_memory PROPERTIES
+set_target_properties(a_sentence_chunker_library_memory PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
 
 if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_memory PROPERTIES
+  set_target_properties(a_sentence_chunker_library_memory PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
   )
 endif()
 
-target_link_libraries(search_index_library_memory PUBLIC
+target_link_libraries(a_sentence_chunker_library_memory PUBLIC
   the_macro_library::the_macro_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
 )
 
-target_compile_options(search_index_library_memory PRIVATE ${_A_DEBUG_OPTS})
+target_compile_options(a_sentence_chunker_library_memory PRIVATE ${_A_DEBUG_OPTS})
 
 if(A_BUILD_ENABLE_MEMORY_PROFILE)
-  target_compile_definitions(search_index_library_memory PUBLIC ${A_BUILD_MEMORY_DEFINE})
+  target_compile_definitions(a_sentence_chunker_library_memory PUBLIC ${A_BUILD_MEMORY_DEFINE})
 endif()
 
-install(TARGETS search_index_library_memory EXPORT search_index_libraryTargets
+install(TARGETS a_sentence_chunker_library_memory EXPORT a_sentence_chunker_libraryTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_static STATIC
+add_library(a_sentence_chunker_library_static STATIC
   src/sil_document_builder.c
   src/sil_document_image.c
   src/sil_search_builder.c
@@ -144,40 +144,40 @@ add_library(search_index_library_static STATIC
   src/snippets.c
 )
 
-target_include_directories(search_index_library_static PUBLIC
+target_include_directories(a_sentence_chunker_library_static PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-set_target_properties(search_index_library_static PROPERTIES
+set_target_properties(a_sentence_chunker_library_static PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
 
 if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_static PROPERTIES
+  set_target_properties(a_sentence_chunker_library_static PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
   )
 endif()
 
-target_link_libraries(search_index_library_static PUBLIC
+target_link_libraries(a_sentence_chunker_library_static PUBLIC
   the_macro_library::the_macro_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
 )
 
-target_compile_options(search_index_library_static PRIVATE ${_A_RELEASE_OPTS})
+target_compile_options(a_sentence_chunker_library_static PRIVATE ${_A_RELEASE_OPTS})
 
 
-install(TARGETS search_index_library_static EXPORT search_index_libraryTargets
+install(TARGETS a_sentence_chunker_library_static EXPORT a_sentence_chunker_libraryTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-add_library(search_index_library_shared SHARED
+add_library(a_sentence_chunker_library_shared SHARED
   src/sil_document_builder.c
   src/sil_document_image.c
   src/sil_search_builder.c
@@ -185,54 +185,54 @@ add_library(search_index_library_shared SHARED
   src/snippets.c
 )
 
-target_include_directories(search_index_library_shared PUBLIC
+target_include_directories(a_sentence_chunker_library_shared PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-set_target_properties(search_index_library_shared PROPERTIES
+set_target_properties(a_sentence_chunker_library_shared PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
 
 if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_shared PROPERTIES
+  set_target_properties(a_sentence_chunker_library_shared PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
   )
 endif()
 
-target_link_libraries(search_index_library_shared PUBLIC
+target_link_libraries(a_sentence_chunker_library_shared PUBLIC
   the_macro_library::the_macro_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
 )
 
-target_compile_options(search_index_library_shared PRIVATE ${_A_RELEASE_OPTS})
+target_compile_options(a_sentence_chunker_library_shared PRIVATE ${_A_RELEASE_OPTS})
 
 
-install(TARGETS search_index_library_shared EXPORT search_index_libraryTargets
+install(TARGETS a_sentence_chunker_library_shared EXPORT a_sentence_chunker_libraryTargets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 string(REPLACE "-" "_" _variant_us "${A_BUILD_VARIANT}")
-set(_sel_tgt "search_index_library_${_variant_us}")
+set(_sel_tgt "a_sentence_chunker_library_${_variant_us}")
 if(TARGET "${_sel_tgt}")
-  add_library(search_index_library::search_index_library ALIAS ${_sel_tgt})
+  add_library(a_sentence_chunker_library::a_sentence_chunker_library ALIAS ${_sel_tgt})
 endif()
 
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
-install(EXPORT search_index_libraryTargets
-  FILE search_index_libraryTargets.cmake
-  NAMESPACE search_index_library::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/search_index_library)
+install(EXPORT a_sentence_chunker_libraryTargets
+  FILE a_sentence_chunker_libraryTargets.cmake
+  NAMESPACE a_sentence_chunker_library::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/a_sentence_chunker_library)
 
 # ---- Package config with umbrella target -------------------------------------
 set(_CFG_IN "${CMAKE_CURRENT_BINARY_DIR}/config.cmake.in")
@@ -254,7 +254,7 @@ foreach(_dep IN LISTS _deps)
 endforeach()
 set(A_BUILD_VARIANT "${_save_variant}")
 
-include("${CMAKE_CURRENT_LIST_DIR}/search_index_libraryTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/a_sentence_chunker_libraryTargets.cmake")
 
 set(_ns "@A_BUILD_EXPORT_NAMESPACE@")
 set(_pkg "@A_BUILD_TARGET_BASENAME@")
@@ -270,25 +270,25 @@ if(NOT TARGET ${_ns}::${_pkg})
 endif()
 ]=])
 
-set(A_BUILD_TARGET_BASENAME "search_index_library")
-set(A_BUILD_EXPORT_NAMESPACE "search_index_library")
+set(A_BUILD_TARGET_BASENAME "a_sentence_chunker_library")
+set(A_BUILD_EXPORT_NAMESPACE "a_sentence_chunker_library")
 set(A_BUILD_DEPS "the_macro_library;a_memory_library;the_io_library;a_json_library")
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
   "${_CFG_IN}"
-  "${CMAKE_CURRENT_BINARY_DIR}/search_index_libraryConfig.cmake"
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/search_index_library
+  "${CMAKE_CURRENT_BINARY_DIR}/a_sentence_chunker_libraryConfig.cmake"
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/a_sentence_chunker_library
 )
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/search_index_libraryConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/a_sentence_chunker_libraryConfigVersion.cmake"
   VERSION ${PROJECT_VERSION}
   COMPATIBILITY SameMajorVersion
 )
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/search_index_libraryConfig.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/search_index_libraryConfigVersion.cmake"
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/search_index_library
+  "${CMAKE_CURRENT_BINARY_DIR}/a_sentence_chunker_libraryConfig.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/a_sentence_chunker_libraryConfigVersion.cmake"
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/a_sentence_chunker_library
 )
 # Extra project-specific targets
 

@@ -44,6 +44,7 @@ case "$COMMAND" in
 
     cmake -S . -B "$BUILD_DIR" -G "$GENERATOR" \
       -DCMAKE_BUILD_TYPE="$BUILD_TYPE" \
+      -DCMAKE_PREFIX_PATH="$PREFIX" \
       -DCMAKE_INSTALL_PREFIX="$PREFIX" \
       -DA_BUILD_VARIANT="$BUILD_VARIANT"
 
@@ -85,7 +86,7 @@ case "$COMMAND" in
     echo ""
     echo "--- Coverage summary (console) ---"
     # Compiled library: summarize from the built archive
-    llvm-cov report "$COV_BUILD_DIR/libsearch_index_library_debug.a" \
+    llvm-cov report "$COV_BUILD_DIR/liba_sentence_chunker_library_debug.a" \
       -instr-profile="$COV_BUILD_DIR/tests/default.profdata"
 
     echo ""
