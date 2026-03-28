@@ -7,10 +7,10 @@
 # CMakeLists.txt for tests
 cmake_minimum_required(VERSION 3.20)
 
-project(a_sentence_chunker_library_tests LANGUAGES C)
+project(search_index_library_tests LANGUAGES C)
 
 set(A_BUILD_VARIANT "debug" CACHE STRING
-    "Variant to link via a_sentence_chunker_library::a_sentence_chunker_library (debug|memory|static|shared)")
+    "Variant to link via search_index_library::search_index_library (debug|memory|static|shared)")
 set_property(CACHE A_BUILD_VARIANT PROPERTY STRINGS debug memory static shared)
 
 option(A_ENABLE_COVERAGE "Enable code coverage instrumentation" OFF)
@@ -23,8 +23,8 @@ find_package(the_io_library CONFIG REQUIRED)
 find_package(a_json_library CONFIG REQUIRED)
 
 # Fallback for standalone test builds (when not included via add_subdirectory)
-if(NOT TARGET a_sentence_chunker_library::a_sentence_chunker_library)
-  find_package(a_sentence_chunker_library CONFIG REQUIRED)
+if(NOT TARGET search_index_library::search_index_library)
+  find_package(search_index_library CONFIG REQUIRED)
 endif()
 
 set(TEST_EXECUTABLES "")
@@ -55,7 +55,7 @@ target_link_libraries(test_document_builder PRIVATE the_macro_library::the_macro
 target_link_libraries(test_document_builder PRIVATE a_memory_library::a_memory_library)
 target_link_libraries(test_document_builder PRIVATE the_io_library::the_io_library)
 target_link_libraries(test_document_builder PRIVATE a_json_library::a_json_library)
-target_link_libraries(test_document_builder PRIVATE a_sentence_chunker_library::a_sentence_chunker_library)
+target_link_libraries(test_document_builder PRIVATE search_index_library::search_index_library)
 
 if(M_LIB)
   target_link_libraries(test_document_builder PRIVATE ${M_LIB})
@@ -109,7 +109,7 @@ if(A_ENABLE_COVERAGE AND CMAKE_C_COMPILER_ID MATCHES "Clang")
     # Normal compiled library path
     add_custom_command(TARGET coverage_report POST_BUILD
       COMMAND ${LLVM_COV_EXECUTABLE} show
-              ../liba_sentence_chunker_library_${A_BUILD_VARIANT}.a
+              ../libsearch_index_library_${A_BUILD_VARIANT}.a
               -instr-profile=default.profdata
               -format=html -output-dir=coverage_html
               --ignore-filename-regex='/usr/.*'

@@ -120,10 +120,10 @@ RUN set -eux; \
 
 
 # --- Build & install this project --------------------------------------------
-COPY --chown=dev:dev . /workspace/a-sentence-chunker-library
-RUN mkdir -p /workspace/build/a-sentence-chunker-library && \
-    cd /workspace/build/a-sentence-chunker-library && \
-    cmake /workspace/a-sentence-chunker-library && \
+COPY --chown=dev:dev . /workspace/search-index-library
+RUN mkdir -p /workspace/build/search-index-library && \
+    cd /workspace/build/search-index-library && \
+    cmake /workspace/search-index-library && \
     make -j"$(nproc)" && sudo make install
 
 CMD ["/bin/bash"]
