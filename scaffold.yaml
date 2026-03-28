@@ -1,5 +1,5 @@
-project_title: Search Index Library
-version: 0.1.0
+project_title: A Sentence Chunker Library
+version: 0.0.1
 stack: c/cmake
 date_created: 2024-01-01
 profile: default-knode
@@ -9,7 +9,7 @@ base_templates:
   ref: main
 
 depends_on:
-  - https://github.com/contactandyc/a-memory-library.git
   - https://github.com/contactandyc/the-macro-library.git
+  - https://github.com/contactandyc/a-memory-library.git
   - https://github.com/contactandyc/the-io-library.git
-  - https://github.com/contactandyc/a-tokenizer-library.git
+  - https://github.com/contactandyc/a-json-library.git
