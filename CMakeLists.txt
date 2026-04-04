@@ -8,7 +8,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(search_index_library
-  VERSION 0.1.3
+  VERSION 0.1.4
   LANGUAGES C
 )
 # ── Variant selection for the umbrella alias ──────────────────────────────────
