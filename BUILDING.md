@@ -1,7 +1,7 @@
 # BUILDING
 
 This project: **Search Index Library**
-Version: **0.1.2**
+Version: **0.1.3**
 
 ## Local build
 
@@ -130,5 +130,19 @@ cd "the-io-library"
 ./build.sh install
 cd ..
 rm -rf "the-io-library"
+```
+
+
+### a-tokenizer-library
+
+Clone & build:
+
+```bash
+git clone --depth 1 --single-branch "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library"
+cd "a-tokenizer-library"
+./build.sh clean
+./build.sh install
+cd ..
+rm -rf "a-tokenizer-library"
 ```
 

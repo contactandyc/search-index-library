@@ -8,7 +8,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(search_index_library
-  VERSION 0.1.2
+  VERSION 0.1.3
   LANGUAGES C
 )
 # ── Variant selection for the umbrella alias ──────────────────────────────────
@@ -43,6 +43,7 @@ include(GNUInstallDirs)
 
 # ---- Dependencies (Standard CMake) ----
 find_package(the_macro_library CONFIG REQUIRED)
+find_package(a_tokenizer_library CONFIG REQUIRED)
 find_package(a_memory_library CONFIG REQUIRED)
 find_package(the_io_library CONFIG REQUIRED)
 find_package(a_json_library CONFIG REQUIRED)
@@ -74,6 +75,7 @@ set_target_properties(search_index_library_debug PROPERTIES
 
 target_link_libraries(search_index_library_debug PUBLIC
   the_macro_library::the_macro_library
+  a_tokenizer_library::a_tokenizer_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
@@ -110,6 +112,7 @@ set_target_properties(search_index_library_memory PROPERTIES
 
 target_link_libraries(search_index_library_memory PUBLIC
   the_macro_library::the_macro_library
+  a_tokenizer_library::a_tokenizer_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
@@ -149,6 +152,7 @@ set_target_properties(search_index_library_static PROPERTIES
 
 target_link_libraries(search_index_library_static PUBLIC
   the_macro_library::the_macro_library
+  a_tokenizer_library::a_tokenizer_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
@@ -185,6 +189,7 @@ set_target_properties(search_index_library_shared PROPERTIES
 
 target_link_libraries(search_index_library_shared PUBLIC
   the_macro_library::the_macro_library
+  a_tokenizer_library::a_tokenizer_library
   a_memory_library::a_memory_library
   the_io_library::the_io_library
   a_json_library::a_json_library
@@ -253,7 +258,7 @@ endif()
 
 set(A_BUILD_TARGET_BASENAME "search_index_library")
 set(A_BUILD_EXPORT_NAMESPACE "search_index_library")
-set(A_BUILD_DEPS "the_macro_library;a_memory_library;the_io_library;a_json_library")
+set(A_BUILD_DEPS "the_macro_library;a_tokenizer_library;a_memory_library;the_io_library;a_json_library")
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
