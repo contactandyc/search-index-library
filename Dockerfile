@@ -112,6 +112,14 @@ RUN set -eux; \
     ./build.sh install; \
     cd ..; \
     rm -rf "the-io-library"
+# --- Build & install a-tokenizer-library ---
+RUN set -eux; \
+    git clone --depth 1 --single-branch "https://github.com/contactandyc/a-tokenizer-library.git" "a-tokenizer-library"; \
+    cd "a-tokenizer-library"; \
+    ./build.sh clean && \
+    ./build.sh install; \
+    cd ..; \
+    rm -rf "a-tokenizer-library"
 
 # --- Build & install this project --------------------------------------------
 COPY --chown=dev:dev . /workspace/search-index-library
