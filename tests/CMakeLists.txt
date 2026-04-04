@@ -44,13 +44,9 @@ list(APPEND TEST_EXECUTABLES test_document_builder)
 set_target_properties(test_document_builder PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED YES
 )
-if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(test_document_builder PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED YES
-  )
-endif()
 
 target_link_libraries(test_document_builder PRIVATE the_macro_library::the_macro_library)
 target_link_libraries(test_document_builder PRIVATE a_tokenizer_library::a_tokenizer_library)
