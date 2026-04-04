@@ -8,7 +8,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(search_index_library
-  VERSION 0.1.1
+  VERSION 0.1.2
   LANGUAGES C
 )
 # ── Variant selection for the umbrella alias ──────────────────────────────────
@@ -67,15 +67,10 @@ target_include_directories(search_index_library_debug PUBLIC
 set_target_properties(search_index_library_debug PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
-
-if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_debug PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED YES
-  )
-endif()
 
 target_link_libraries(search_index_library_debug PUBLIC
   the_macro_library::the_macro_library
@@ -108,15 +103,10 @@ target_include_directories(search_index_library_memory PUBLIC
 set_target_properties(search_index_library_memory PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
-
-if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_memory PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED YES
-  )
-endif()
 
 target_link_libraries(search_index_library_memory PUBLIC
   the_macro_library::the_macro_library
@@ -152,15 +142,10 @@ target_include_directories(search_index_library_static PUBLIC
 set_target_properties(search_index_library_static PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
-
-if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_static PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED YES
-  )
-endif()
 
 target_link_libraries(search_index_library_static PUBLIC
   the_macro_library::the_macro_library
@@ -193,15 +178,10 @@ target_include_directories(search_index_library_shared PUBLIC
 set_target_properties(search_index_library_shared PROPERTIES
   C_STANDARD 23
   C_STANDARD_REQUIRED YES
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED YES
   POSITION_INDEPENDENT_CODE ON
 )
-
-if("CXX" IN_LIST CMAKE_PROJECT_LANGUAGES)
-  set_target_properties(search_index_library_shared PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED YES
-  )
-endif()
 
 target_link_libraries(search_index_library_shared PUBLIC
   the_macro_library::the_macro_library
@@ -239,6 +219,7 @@ set(_CFG_IN "${CMAKE_CURRENT_BINARY_DIR}/config.cmake.in")
 file(WRITE "${_CFG_IN}" [=[
 @PACKAGE_INIT@
 include(CMakeFindDependencyMacro)
+
 
 if(NOT DEFINED A_BUILD_VARIANT OR A_BUILD_VARIANT STREQUAL "")
   set(A_BUILD_VARIANT "debug")
