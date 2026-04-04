@@ -1,5 +1,5 @@
 project_title: Search Index Library
-version: 0.1.2
+version: 0.1.3
 stack: c/cmake
 date_created: 2024-01-01
 profile: default-knode
@@ -10,6 +10,7 @@ base_templates:
 
 depends_on:
   - https://github.com/contactandyc/the-macro-library.git
+  - https://github.com/contactandyc/a-tokenizer-library.git
   - https://github.com/contactandyc/a-memory-library.git
   - https://github.com/contactandyc/the-io-library.git
   - https://github.com/contactandyc/a-json-library.git
