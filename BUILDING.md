@@ -1,7 +1,7 @@
 # BUILDING
 
 This project: **Search Index Library**
-Version: **0.1.4**
+Version: **0.1.6**
 
 ## Local build
 
