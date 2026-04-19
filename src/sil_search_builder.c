@@ -101,6 +101,9 @@ static inline void _finish_document(sil_search_builder_t *h) {
         gh->document_length = h->document_length;
         h->total_documents++;
         h->total_terms += h->document_length;
+        if(aml_buffer_length(h->global_bh) == 0) {
+            printf("Hello!\n");
+        }
         io_out_write_record(h->global_data, aml_buffer_data(h->global_bh), aml_buffer_length(h->global_bh));
     }
 }
@@ -568,5 +571,6 @@ void sil_search_builder_destroy(sil_search_builder_t *h) {
     fprintf(out_stats, "average document length: %f\n",
             h->total_documents > 0 ? (double)h->total_terms / (double)h->total_documents : 0.0);
     fclose(out_stats);
+    aml_buffer_destroy(h->global_bh);
     aml_free(h);
 }

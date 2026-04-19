@@ -182,13 +182,15 @@ void sil_document_builder_global(sil_document_builder_t *h,
     sort_term_data((term_data_t **)aml_buffer_data(h->term_bh), aml_buffer_length(h->term_bh)/sizeof(term_data_t *));
     term_data_t **p = (term_data_t **)aml_buffer_data(h->term_bh);
     term_data_t **ep = (term_data_t **)aml_buffer_end(h->term_bh);
-    size_t num_terms = ep-p;
+    size_t num_terms = 0;
+
     while(p < ep) {
         term_data_t **cur = p;
         while(p < ep && !strcmp((char *)(*cur+1), (char *)(*p+1)))
             p++;
 
         compress_term(cur, p, h->bh, h->tmp_bh);
+        num_terms++;
     }
 
     sil_document_header_t header;
@@ -226,6 +228,8 @@ static void _sil_document_builder_term(sil_document_builder_t *h, uint32_t value
     t->position = pos;
     t->value = value;
     char *p = (char *)(t+1);
+    strcpy(p, term);
+    /*  This used to lowercase the string, but not doing that anymore!
     while(*term) {
         if(*term >= 'A' && *term <= 'Z')
             *p++ = *term++ - 'A' + 'a';
@@ -233,6 +237,7 @@ static void _sil_document_builder_term(sil_document_builder_t *h, uint32_t value
             *p++ = *term++;
     }
     *p = 0;
+    */
     aml_buffer_append(h->term_bh, &t, sizeof(t));
 }
 
