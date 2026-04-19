@@ -260,6 +260,14 @@ static inline void sil_term_decode_positions(sil_term_t *t) {
     t->term_positions_end = wp;
 }
 
+// Wrapper function to satisfy atl_cursor position decoding requirements without explicit coupling
+static inline void sil_term_decode_positions_wrapper(atl_cursor_t *c, uint32_t **pos_start, uint32_t **pos_end) {
+    sil_term_t *term = (sil_term_t *)c;
+    sil_term_decode_positions(term);
+    *pos_start = term->term_positions;
+    *pos_end = term->term_positions_end;
+}
+
 
 static inline uint8_t *decode_position_value(uint32_t *value, uint8_t *p) {
     if(*p < SMALL_GROUP_2BYTE_POS_VALUE) {
@@ -350,6 +358,5 @@ static inline void advance_document_id(sil_term_ext_t *t) {
         t->wp = t->p;
     }
 }
-
 
 #endif

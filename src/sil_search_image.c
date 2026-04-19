@@ -323,6 +323,7 @@ static void fill_term(sil_search_image_t *img, aml_pool_t *pool,
     r->eterm = img->terms+img->num_terms;
     r->pub.c.advance = (atl_cursor_advance_cb)sil_search_image_first_advance;
     r->pub.c.advance_to = (atl_cursor_advance_to_cb)sil_search_image_advance_to;
+    r->pub.c.decode_positions = sil_term_decode_positions_wrapper;
 
     r->pub.c.type = TERM_CURSOR;
 }
